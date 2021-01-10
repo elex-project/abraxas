@@ -1,6 +1,6 @@
-# tmpl-java-library
+# Abraxas
 
-Template for Java library project
+Core utility classes
 
 ---
 developed by Elex
