@@ -6,12 +6,8 @@ plugins {
 }
 
 group = "com.elex-project"
-version = "1.0-SNAPSHOT"
-description = ""
-
-// Repository credential, Must be defined in ~/.gradle/gradle.properties
-val repoUser : String by project
-val repoPassword : String by project
+version = "4.0.0"
+description = "Core Utility Classes"
 
 repositories {
 	mavenCentral()
@@ -23,14 +19,6 @@ repositories {
 			password = project.findProperty("github.token") as String
 		}
 	}
-	maven {
-		credentials {
-			username = repoUser
-			password = repoPassword
-		}
-		url = uri("https://repository.elex-project.com/repository/maven/")
-	}
-
 }
 
 java {
@@ -55,7 +43,7 @@ tasks.jar {
 				"Implementation-Title" to project.name,
 				"Implementation-Version" to project.version,
 				"Implementation-Vendor" to "ELEX co.,pte.",
-				"Automatic-Module-Name" to "${project.group}.${project.name}"
+				"Automatic-Module-Name" to "com.elex_project.abraxas"
 		))
 	}
 }
@@ -91,10 +79,6 @@ publishing {
 				name.set(project.name)
 				description.set(project.description)
 				url.set("https://")
-				properties.set(mapOf(
-						"myProp" to "value",
-						"prop.with.dots" to "anotherValue"
-				))
 				licenses {
 					license {
 						// todo
