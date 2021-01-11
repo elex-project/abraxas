@@ -30,5 +30,28 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-rootProject.name = "abraxas"
+package com.elex_project.abraxas;
 
+import java.io.IOException;
+
+/**
+ *
+ * @param <T>
+ * @author Elex
+ */
+public class HttpPutRequest<T> extends HttpPostRequest<T> {
+	public HttpPutRequest(final Uri uri) throws IOException {
+		super(uri);
+	}
+
+	public HttpPutRequest(final String uri) throws IOException {
+		super(uri);
+	}
+
+	@Override
+	protected void init() throws IOException {
+		super.init();
+		this.connection.setRequestMethod(HttpMethod.PUT.getName());
+	}
+	
+}

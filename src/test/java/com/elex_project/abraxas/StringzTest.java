@@ -30,5 +30,23 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-rootProject.name = "abraxas"
+package com.elex_project.abraxas;
 
+import org.junit.jupiter.api.Test;
+
+import java.util.Optional;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
+
+class StringzTest {
+
+	@Test
+	void format() {
+		String str = Stringz.format("Hello, {}. I'm {} year-old.", "Charlie", 17);
+		Console.writeLine(str);
+	}
+
+
+}

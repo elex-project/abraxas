@@ -30,5 +30,19 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-rootProject.name = "abraxas"
+package com.elex_project.abraxas;
 
+import org.junit.jupiter.api.Test;
+
+import java.util.regex.Pattern;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class RandomTest {
+
+	@Test
+	void getCharsByPattern() {
+		String v = Random.getCharsByPattern(Pattern.compile("[0-9a-z!@#$%^&*]"), 8);
+		Console.writeLine(v);
+	}
+}

@@ -30,5 +30,42 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-rootProject.name = "abraxas"
+package com.elex_project.abraxas;
 
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
+/**
+ * @author Elex
+ */
+public enum HttpMethod {
+	GET("GET"), HEAD("HEAD"),
+	POST("POST"), PUT("PUT"),
+	DELETE("DELETE"), CONNECT("CONNECT"),
+	OPTIONS("OPTIONS"), TRACE("TRACE"), PATCH("PATCH");
+
+	private final String name;
+
+	HttpMethod(String name) {
+		this.name = name;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	@Nullable
+	public static HttpMethod of(@NotNull String name) {
+		for (HttpMethod m : values()) {
+			if (m.getName().equalsIgnoreCase(name)) {
+				return m;
+			}
+		}
+		return null;
+	}
+
+	@Override
+	public String toString() {
+		return name;
+	}
+}

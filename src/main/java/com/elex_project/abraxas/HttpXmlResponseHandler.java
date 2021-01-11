@@ -30,5 +30,30 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-rootProject.name = "abraxas"
+package com.elex_project.abraxas;
 
+import org.w3c.dom.Document;
+import org.xml.sax.SAXException;
+
+import javax.xml.parsers.ParserConfigurationException;
+import java.io.IOException;
+import java.io.InputStream;
+
+/**
+ * @author Elex
+ */
+public abstract class HttpXmlResponseHandler implements HttpResponseHandler<Document> {
+
+	@Override
+	public Document transform(final InputStream is) throws IOException {
+		Document xml = null;
+		try {
+			xml = IOz.readXMLFrom(is);
+			xml.normalize();
+			return xml;
+
+		} catch (ParserConfigurationException | SAXException e) {
+			throw new IOException("XML?");
+		}
+	}
+}

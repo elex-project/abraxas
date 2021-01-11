@@ -30,5 +30,35 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-rootProject.name = "abraxas"
+package com.elex_project.abraxas;
 
+/**
+ * @param <R>
+ * @param <C>
+ * @param <V>
+ * @author Elex
+ * @see Table
+ */
+public interface TableWalker<R, C, V> {
+	/**
+	 * 데이터 방문
+	 *
+	 * @param row   행
+	 * @param col   열
+	 * @param value 값
+	 */
+	public void onVisit(R row, C col, V value);
+
+	/**
+	 * @param row 행
+	 * @return 스킵하려면 false를 반환하시오.
+	 */
+	public boolean beforeVisitRow(R row);
+
+	/**
+	 * @param row 행
+	 * @param col 열
+	 * @return 스킵하려면 false를 반환하시오.
+	 */
+	public boolean beforeVisitCol(R row, C col);
+}

@@ -30,5 +30,45 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-rootProject.name = "abraxas"
+package com.elex_project.abraxas.collections;
 
+import org.junit.jupiter.api.Test;
+
+import java.util.*;
+
+public class CollectionsSample {
+	@Test
+	void stack(){
+		Stack<String> stack = new Stack<>();
+		stack.push("Hello");
+		String v = stack.peek();
+		v = stack.pop();
+	}
+	@Test
+	void queue(){
+		Queue<String> queue = new LinkedList<>();
+		queue.offer("Hello");
+		String v = queue.poll();
+		queue.element();
+	}
+	@Test
+	void list(){
+		List<String> list = new ArrayList<>();
+		list.add("Hello");
+		String v = list.get(0);
+	}
+	@Test
+	void set(){
+		Set<String> set = new HashSet<>();
+		set.add("Hello");
+		for(String v : set){
+
+		}
+	}
+	@Test
+	void map(){
+		Map<String, String> map = new HashMap<>();
+		map.put("message", "Hello");
+		String v = map.get("message");
+	}
+}

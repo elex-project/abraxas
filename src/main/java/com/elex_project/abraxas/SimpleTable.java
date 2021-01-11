@@ -30,5 +30,32 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-rootProject.name = "abraxas"
+package com.elex_project.abraxas;
 
+/**
+ * 행과 열에 숫자를 사용하는 간단 테이블
+ *
+ * @param <T> 값
+ *
+ * @author Elex
+ */
+public class SimpleTable<T> extends Table<Integer, Integer, T> {
+
+	public int getMaxRow() {
+		int max = 0;
+		for (Integer i : getRowKeys()) {
+			max = Math.max(max, i);
+		}
+		return max;
+	}
+
+	public int getMaxCol() {
+		int max = 0;
+		for (Integer r : getRowKeys()) {
+			for (Integer c : getColumnKeySet(r)) {
+				max = Math.max(max, c);
+			}
+		}
+		return max;
+	}
+}

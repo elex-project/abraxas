@@ -30,5 +30,20 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-rootProject.name = "abraxas"
+package com.elex_project.abraxas;
 
+/**
+ * Tree walker
+ *
+ * @param <T>
+ * @author Elex
+ * @see TreeNode
+ */
+public interface TreeWalker<T> {
+	/**
+	 * 트리 방문
+	 *
+	 * @param treeItem 트리 아이템
+	 */
+	public void onVisit(TreeItem<T> treeItem);
+}

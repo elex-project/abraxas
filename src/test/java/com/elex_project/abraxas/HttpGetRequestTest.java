@@ -30,5 +30,50 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-rootProject.name = "abraxas"
+package com.elex_project.abraxas;
 
+import org.jetbrains.annotations.Nullable;
+import org.junit.jupiter.api.Test;
+
+import java.io.IOException;
+import java.util.List;
+import java.util.Map;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class HttpGetRequestTest {
+
+	@Test
+	void send() {
+
+		try {
+			HttpGetRequest<String> request = new HttpGetRequest<>(Uri.builder()
+					.scheme("https").host("www.elex-project.com")
+					.build());
+			request.setFollowRedirect(true);
+			request.send(new HttpStringResponseHandler() {
+				@Override
+				public void onResponse(final int status, final Map<String, List<String>> headers, @Nullable final String message) {
+					Console.writeLine("Status: " + status);
+					for (String key : headers.keySet()){
+						try {
+							Console.writeLine("Header: {} = {}", key, headers.get(key));
+						} catch (Throwable e){
+							e.printStackTrace();
+						}
+					}
+					Console.writeLine(message);
+				}
+
+				@Override
+				public void onException(final Throwable e) {
+					e.printStackTrace();
+				}
+			});
+
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+}

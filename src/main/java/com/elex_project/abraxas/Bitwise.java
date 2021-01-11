@@ -30,5 +30,91 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-rootProject.name = "abraxas"
+package com.elex_project.abraxas;
 
+/**
+ * Bitwise calculation
+ * @param <T> type
+ * @author Elex
+ */
+public interface Bitwise<T extends Number> {
+	public String toBinaryString();
+
+	public String toDecimalString();
+
+	public String toHexString();
+
+	public String toOctalString();
+
+	public void set(int idx, boolean val);
+
+	public void set(int idx);
+
+	public void set();
+
+	public void clear(int idx);
+
+	public void clear();
+
+	public boolean getBitAt(int pos);
+
+	public T value();
+
+	public void value(byte v);
+
+	public void value(short v);
+
+	public void value(int v);
+
+	public void value(long v);
+
+	public void add(byte a);
+
+	public void add(short a);
+
+	public void add(int a);
+
+	public void add(long a);
+
+	public void and(byte a);
+
+	public void or(byte a);
+
+	public void xor(byte a);
+
+	public void and(short a);
+
+	public void or(short a);
+
+	public void xor(short a);
+
+	public void and(int a);
+
+	public void or(int a);
+
+	public void xor(int a);
+
+	public void and(long a);
+
+	public void or(long a);
+
+	public void xor(long a);
+
+	public void flip();
+
+	public void flip(int idx);
+
+	public void complementOf2();
+
+	public void reverse();
+
+	public int size();
+
+	public void shiftLeft(int n);
+
+	public void shiftRight(int n);
+
+	public void rotateLeft(int n);
+
+	public void rotateRight(int n);
+}

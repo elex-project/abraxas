@@ -30,5 +30,128 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-rootProject.name = "abraxas"
+package com.elex_project.abraxas;
 
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+import java.util.Set;
+class ArrayzTest {
+	private final int[] array1 = {1,3,5,7,9};
+	private final int[] array2 = {1,2,7,10};
+
+	@Test
+	void union() {
+		Set<Integer> array = Arrayz.union(array1, array2);
+		Console.writeLine(array);
+	}
+
+	@Test
+	void subtract() {
+		Set<Integer> array = Arrayz.subtract(array1, array2);
+		Console.writeLine(array);
+	}
+
+	@Test
+	void intersect() {
+		Set<Integer> array = Arrayz.intersect(array1, array2);
+		Console.writeLine(array);
+	}
+
+	@Test
+	void rangeOf() {
+		for (int i : Arrayz.ofRange(5, 10)) {
+			Console.writeLine(i);
+		}
+	}
+
+	@Test
+	void asList() {
+	}
+
+	@Test
+	void testAsList() {
+	}
+
+	@Test
+	void concat() {
+	}
+
+	@Test
+	void testConcat() {
+	}
+
+
+	@Test
+	void concatIgnoreDuplicate() {
+	}
+
+	@Test
+	void testConcatIgnoreDuplicate() {
+	}
+
+	@Test
+	void removeElement() {
+	}
+
+	@Test
+	void testRemoveElement() {
+	}
+
+	@Test
+	void sort() {
+	}
+
+	@Test
+	void testSort() {
+	}
+
+	@Test
+	void flip() {
+	}
+
+	@Test
+	void iterate() {
+	}
+
+	@Test
+	void testIterate() {
+	}
+
+
+	@Test
+	void ofRange() {
+	}
+
+	@Test
+	void testOfRange() {
+	}
+
+	@Test
+	void isEmpty() {
+	}
+
+	@Test
+	void testIsEmpty() {
+	}
+
+
+
+	@Test
+	void fill() {
+	}
+
+	@Test
+	void copy() {
+		int[] array = {1,2,3,4,5,6,7,8,9};
+		int[] dest1 = new int[10];
+		int[] dest2 = new int[10];
+
+		System.arraycopy(array,2,dest1, 4, 5);
+		Arrayz.copy(array, 2, dest2, 4,5);
+
+		Assertions.assertArrayEquals(dest1, dest2);
+		Console.writeLine(dest1);
+		Console.writeLine(dest2);
+	}
+}

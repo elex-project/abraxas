@@ -30,5 +30,15 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-rootProject.name = "abraxas"
+package com.elex_project.abraxas;
 
+class ArgsTest {
+
+	public static void main(String... args) {
+		Args parsedArgs = Args.parse(args);
+
+		Console.writeLine(parsedArgs);
+
+		Console.writeLine("Message= " + parsedArgs.get("message").orElse("Not exists."));
+	}
+}

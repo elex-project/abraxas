@@ -30,5 +30,29 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-rootProject.name = "abraxas"
+package com.elex_project.abraxas;
 
+import java.io.IOException;
+
+/**
+ *
+ * @param <T>
+ * @author Elex
+ */
+public class HttpDeleteRequest<T> extends HttpGetRequest<T> {
+	public HttpDeleteRequest(final Uri uri) throws IOException {
+		super(uri);
+	}
+
+	public HttpDeleteRequest(final String uri) throws IOException {
+		super(uri);
+	}
+
+	@Override
+	protected void init() throws IOException {
+		super.init();
+		this.connection.setRequestMethod(HttpMethod.DELETE.getName());
+		this.connection.setDoOutput(false);
+	}
+
+}

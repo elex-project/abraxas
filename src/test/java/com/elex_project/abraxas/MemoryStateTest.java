@@ -30,5 +30,24 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-rootProject.name = "abraxas"
+package com.elex_project.abraxas;
 
+import lombok.extern.slf4j.Slf4j;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+@Slf4j
+class MemoryStateTest {
+
+	@Test
+	void update() throws InterruptedException {
+		MemoryState memoryState = new MemoryState();
+		log.info(memoryState.getUsageAsString());
+
+		Thread.sleep(1000);
+		memoryState.update();
+		log.info(memoryState.getUsageAsString());
+		log.info(memoryState.toString());
+	}
+}

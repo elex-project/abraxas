@@ -30,5 +30,34 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-rootProject.name = "abraxas"
+package com.elex_project.abraxas;
 
+import java.io.IOException;
+
+public class HttpGetRequest<T> extends HttpRequest<T>{
+
+	public HttpGetRequest(final Uri uri) throws IOException {
+		super(uri);
+	}
+
+	public HttpGetRequest(final String uri) throws IOException {
+		super(uri);
+	}
+
+	@Override
+	protected void init() throws IOException {
+		super.init();
+		this.connection.setRequestMethod(HttpMethod.GET.getName());
+		this.connection.setDoInput(true);
+		this.connection.setDoOutput(true);
+	}
+
+	@Override
+	public void send(final HttpResponseHandler<T> handler) throws IOException {
+		connection.connect();
+
+		processResponse(handler);
+
+		if (closeConnection) connection.disconnect();
+	}
+}

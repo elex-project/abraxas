@@ -30,5 +30,25 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-rootProject.name = "abraxas"
+package com.elex_project.abraxas;
 
+import org.jetbrains.annotations.Nullable;
+
+import java.io.InputStream;
+import java.util.List;
+import java.util.Map;
+
+public interface HttpResponseHandler<T> {
+	/**
+	 * 응답 받았다~
+	 *
+	 * @param status  서버 응답 코드
+	 * @param headers 응답 헤더
+	 * @param message 전송받은 메시지
+	 */
+	public void onResponse(final int status, final Map<String, List<String>> headers, final @Nullable T message);
+
+	public void onException(Throwable e);
+
+	public T transform(InputStream is) throws Throwable;
+}

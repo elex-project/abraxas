@@ -30,5 +30,18 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-rootProject.name = "abraxas"
+package com.elex_project.abraxas;
 
+import java.io.IOException;
+import java.io.InputStream;
+
+/**
+ * @author Elex
+ */
+public abstract class HttpStringResponseHandler implements HttpResponseHandler<String> {
+
+	@Override
+	public String transform(final InputStream is) throws IOException {
+		return IOz.readStringFrom(is);
+	}
+}

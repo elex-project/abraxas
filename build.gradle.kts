@@ -1,3 +1,35 @@
+/*
+ * BSD 3-Clause License
+ *
+ * Copyright (c) 2021, Elex
+ * All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
+ *
+ * 1. Redistributions of source code must retain the above copyright notice, this
+ *    list of conditions and the following disclaimer.
+ *
+ * 2. Redistributions in binary form must reproduce the above copyright notice,
+ *    this list of conditions and the following disclaimer in the documentation
+ *    and/or other materials provided with the distribution.
+ *
+ * 3. Neither the name of the copyright holder nor the names of its
+ *    contributors may be used to endorse or promote products derived from
+ *    this software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+ * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+ * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+ * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+ * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+ * CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+ * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+ * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ */
+
 plugins {
 	java
 	`java-library`
@@ -11,14 +43,7 @@ description = "Core Utility Classes"
 
 repositories {
 	mavenCentral()
-	maven {
-		name = "Github Packages"
-		url = uri("https://maven.pkg.github.com/")
-		credentials {
-			username = project.findProperty("github.username") as String
-			password = project.findProperty("github.token") as String
-		}
-	}
+	mavenLocal()
 }
 
 java {
@@ -38,7 +63,7 @@ configurations {
 }
 
 tasks.jar {
-	manifest { // todo
+	manifest {
 		attributes(mapOf(
 				"Implementation-Title" to project.name,
 				"Implementation-Version" to project.version,
@@ -75,15 +100,13 @@ publishing {
 		create<MavenPublication>("mavenJava") {
 			from(components["java"])
 			pom {
-				// todo
 				name.set(project.name)
 				description.set(project.description)
-				url.set("https://")
+				url.set("https://github.com/elex-project/abraxas")
 				licenses {
 					license {
-						// todo
-						name.set("licenseName")
-						url.set("licenseUrl")
+						name.set("BSD 3-Clause License")
+						url.set("https://github.com/elex-project/abraxas/blob/main/LICENSE")
 					}
 				}
 				developers {
@@ -94,10 +117,9 @@ publishing {
 					}
 				}
 				scm {
-					// todo
-					connection.set("scm:git:https://github.com/my-library.git")
-					developerConnection.set("scm:git:https://github.com/my-library.git")
-					url.set("https://github.com/my-library/")
+					connection.set("scm:git:https://github.com/elex-project/abraxas.git")
+					developerConnection.set("scm:git:https://github.com/elex-project/abraxas.git")
+					url.set("https://github.com/elex-project/abraxas")
 				}
 			}
 		}
@@ -105,23 +127,8 @@ publishing {
 
 	repositories {
 		maven {
-			name = "mavenLocal"
-			url = uri("file://${buildDir}/repo")
-		}
-		maven {
-			name = "mavenElex"
-			val releaseUrl = uri("https://repository.elex-project.com/repository/maven-releases/")
-			val snapshotUrl = uri("https://repository.elex-project.com/repository/maven-snapshots/")
-			url = if (version.toString().endsWith("SNAPSHOT") ) snapshotUrl else releaseUrl
-
-			credentials {
-				username = repoUser
-				password = repoPassword
-			}
-		}
-		maven { //todo
 			name = "mavenGithub"
-			url = uri("https://maven.pkg.github.com/elex-project/tmpl-java-library")
+			url = uri("https://maven.pkg.github.com/elex-project/abraxas")
 			credentials {
 				username = project.findProperty("github.username") as String
 				password = project.findProperty("github.token") as String
@@ -144,11 +151,3 @@ dependencies {
 	testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.7.0")
 }
 
-tasks.register("printHello") {
-	group = "elex"
-	doLast {
-		println("-?$repoUser")
-		println("Hello")
-
-	}
-}

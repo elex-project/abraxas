@@ -30,5 +30,50 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-rootProject.name = "abraxas"
+package com.elex_project.abraxas;
 
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class BitzTest {
+
+	@Test
+	void isSet() {
+		int val = 365;
+		Console.writeLine(Numberz.toBinaryStringPadded(val));
+
+		assertTrue(Bitz.isSet(val, 0));
+		assertFalse(Bitz.isSet(val, 1));
+		assertTrue(Bitz.isSet(val, 2));
+		assertTrue(Bitz.isSet(val, 3));
+		assertFalse(Bitz.isSet(val, 4));
+	}
+	@Test
+	void isSetArray() {
+		byte[] val = {0x1e, 0x09};
+		Console.writeLine(Bytez.toBinary(val));
+
+		assertTrue(Bitz.isSet(val, 0));
+		assertFalse(Bitz.isSet(val, 1));
+		assertFalse(Bitz.isSet(val, 2));
+		assertTrue(Bitz.isSet(val, 3));
+
+		assertFalse(Bitz.isSet(val, 8));
+		assertTrue(Bitz.isSet(val, 9));
+		assertTrue(Bitz.isSet(val, 10));
+		assertTrue(Bitz.isSet(val, 11));
+	}
+
+	@Test
+	void setBit() {
+	}
+
+	@Test
+	void flipBit() {
+		int val = 365;
+		Console.writeLine(Numberz.toBinaryStringPadded(val));
+		val =Bitz.flipBit(val, 0);
+		Console.writeLine(Numberz.toBinaryStringPadded(val));
+	}
+}

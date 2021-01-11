@@ -30,5 +30,79 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-rootProject.name = "abraxas"
+package com.elex_project.abraxas;
 
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class EnvTest {
+
+	@Test
+	void getUUID() {
+	}
+
+	@Test
+	void getOsName() {
+		Console.writeLine(Env.getOsName());
+	}
+
+	@Test
+	void getOsVersion() {
+		Console.writeLine(Env.getOsVersion());
+	}
+
+	@Test
+	void getOsArch() {
+	}
+
+	@Test
+	void isWindows() {
+	}
+
+	@Test
+	void getJavaName() {
+		Console.writeLine(Env.getJavaName());
+	}
+
+	@Test
+	void getJavaVendor() {
+		Console.writeLine(Env.getJavaVendor());
+	}
+
+	@Test
+	void getJavaVersion() {
+		Console.writeLine(Env.getJavaVersion());
+	}
+
+	@Test
+	void getJVMVersion() {
+		Console.writeLine("Ver: %d", Env.getJVMVersion());
+	}
+
+	@Test
+	void getUserName() {
+	}
+
+	@Test
+	void getUserDir() {
+		Console.writeLine(Env.getUserDir());
+	}
+
+	@Test
+	void getUserHome() {
+		Console.writeLine(Env.getUserHome());
+	}
+
+	@Test
+	void isKorean() {
+	}
+
+	@Test
+	void getLocale() {
+	}
+
+	@Test
+	void localeToString() {
+	}
+}

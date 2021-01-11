@@ -30,5 +30,18 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-rootProject.name = "abraxas"
+package com.elex_project.abraxas;
 
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class ByteArrayBuilderTest {
+
+	@Test
+	void test() {
+		ByteArrayBuilder builder = new ByteArrayBuilder();
+		builder.append(32).append((byte)0x01).appendHex("32ff");
+		Console.writeLine(builder.toByteArray());
+	}
+}
