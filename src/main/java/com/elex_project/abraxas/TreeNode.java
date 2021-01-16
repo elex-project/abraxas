@@ -117,7 +117,7 @@ public class TreeNode<T> implements TreeItem<T> {
 	@Override
 	public int getDepth() {
 		int depth = 0;
-		TreeItem p = this.getParent();
+		TreeItem<T> p = this.getParent();
 		while (p != null) {
 			depth++;
 			p = p.getParent();

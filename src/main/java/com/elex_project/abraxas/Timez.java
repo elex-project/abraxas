@@ -98,11 +98,11 @@ public final class Timez {
 	}
 
 	public static long toEpoch(@NotNull final ZonedDateTime dateTime) {
-		return dateTime.toInstant().toEpochMilli();
+		return toEpoch(dateTime.toInstant());
 	}
 
 	public static long toEpoch(@NotNull final OffsetDateTime dateTime) {
-		return dateTime.toInstant().toEpochMilli();
+		return toEpoch(dateTime.toInstant());
 	}
 
 	public static long toEpoch(@NotNull final LocalDateTime dateTime, @NotNull final ZoneOffset zoneOffset) {
@@ -119,6 +119,10 @@ public final class Timez {
 
 	public static long toEpoch(@NotNull final Date date) {
 		return date.getTime();
+	}
+
+	public static long toEpoch(@NotNull final Instant instant){
+		return instant.toEpochMilli();
 	}
 
 	@NotNull
@@ -147,6 +151,13 @@ public final class Timez {
 	public static Calendar toCalendar(final long epoch) {
 		Calendar calendar = Calendar.getInstance();
 		calendar.setTimeInMillis(epoch);
+		return calendar;
+	}
+
+	@NotNull
+	public static Calendar toCalendar(@NotNull final Instant instant){
+		Calendar calendar = Calendar.getInstance();
+		calendar.setTimeInMillis(instant.toEpochMilli());
 		return calendar;
 	}
 
@@ -191,6 +202,11 @@ public final class Timez {
 	}
 
 	@NotNull
+	public static LocalDateTime toLocalDateTime(@NotNull final Instant instant) {
+		return toLocalDateTime(instant.toEpochMilli());
+	}
+
+	@NotNull
 	public static ZonedDateTime toZonedDateTime(@NotNull final LocalDateTime dateTime, @NotNull final ZoneId zoneId) {
 		return ZonedDateTime.of(dateTime, zoneId);
 	}
@@ -218,6 +234,11 @@ public final class Timez {
 	@NotNull
 	public static ZonedDateTime toZonedDateTime(final long epoch, @NotNull final ZoneId zoneId) {
 		return toZonedDateTime(toLocalDateTime(epoch, zoneId), zoneId);
+	}
+
+	@NotNull
+	public static ZonedDateTime toZonedDateTime(@NotNull final Instant instant, @NotNull final ZoneId zoneId) {
+		return toZonedDateTime(toLocalDateTime(instant), zoneId);
 	}
 
 	@NotNull
@@ -256,6 +277,11 @@ public final class Timez {
 	}
 
 	@NotNull
+	public static OffsetDateTime toOffsetDateTime(@NotNull final Instant instant, @NotNull final ZoneId zoneId) {
+		return toOffsetDateTime(toLocalDateTime(instant), zoneId);
+	}
+
+	@NotNull
 	public static ZoneId toZoneId(@NotNull final TimeZone timeZone) {
 		return timeZone.toZoneId();
 	}
@@ -286,6 +312,16 @@ public final class Timez {
 	}
 
 	@NotNull
+	public static ZoneId defaultZoneId(){
+		return ZoneId.systemDefault();
+	}
+
+	@NotNull
+	public static ZoneOffset defaultZoneOffset(){
+		return defaultZoneId().getRules().getOffset(Instant.now());
+	}
+
+	@NotNull
 	public static Duration duration(@NotNull final Temporal t1, @NotNull final Temporal t2) {
 		return Duration.between(t1, t2).abs();
 	}
@@ -293,6 +329,11 @@ public final class Timez {
 	@NotNull
 	public static Duration duration(final long millis) {
 		return Duration.ofMillis(millis);
+	}
+
+	@NotNull
+	public static Period period(@NotNull final LocalDate from, @NotNull final LocalDate to){
+		return Period.between(from, to);
 	}
 
 	@NotNull
@@ -339,4 +380,5 @@ public final class Timez {
 	public static Instant parseToInstant(@NotNull final String date) throws DateTimeParseException {
 		return Instant.parse(date);
 	}
+
 }

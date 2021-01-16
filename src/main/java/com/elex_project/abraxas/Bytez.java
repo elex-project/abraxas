@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
+import java.nio.ByteBuffer;
 import java.util.Base64;
 import java.util.StringJoiner;
 import java.util.zip.*;
@@ -327,6 +328,20 @@ public final class Bytez {
 		}
 
 
+	}
+
+	public static byte[] fromByteBuffer(final @NotNull ByteBuffer buffer){
+		return buffer.array();
+	}
+
+	@NotNull
+	public static ByteBuffer toByteBuffer(final byte[] bytes){
+		return ByteBuffer.wrap(bytes);
+	}
+
+	@NotNull
+	public static ByteBuffer toByteBuffer(final byte[] bytes, final int offset, final int length){
+		return ByteBuffer.wrap(bytes, offset, length);
 	}
 
 	/**

@@ -570,14 +570,6 @@ public final class Stringz {
 		return src.replaceAll("\\s+", SPACE.toString());
 	}
 
-	public static String encodeHtmlEntities(final String str) {
-		return HtmlEntities.encode(str);
-	}
-
-	public static String decodeHtmlEntities(final String str) {
-		return HtmlEntities.decode(str);
-	}
-
 	@Contract(pure = true)
 	public static boolean startsWithOneOf(String string, @NotNull String... prefixes) {
 		for (String prefix : prefixes) {

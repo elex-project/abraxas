@@ -42,7 +42,7 @@ import java.util.EventListener;
  * FIFO 형식으로 바이트를 저장하고 읽을 수 있는 환형 바이트 버퍼.
  * 버퍼가 가득차면 용량을 알아서 늘인다.
  * <p/>
- * <strike>모든 put&get 메서드는 넌블로킹 방식임.</strike>
+ * <strike>모든 put&amp;get 메서드는 넌블로킹 방식임.</strike>
  * <p/>
  * 스레드에 안전함.
  */
@@ -165,7 +165,6 @@ public class CircularByteBuffer {
 	private synchronized void increaseCapacity(final int newSize) {
 		this.buffer = Arrayz.copyOf(this.buffer, newSize);
 
-
 	}
 
 	public synchronized byte getByte() throws IndexOutOfBoundsException {
@@ -249,8 +248,6 @@ public class CircularByteBuffer {
 		}
 
 		return -1;
-
-
 	}
 
 	public synchronized String getString(final byte terminalByte)
@@ -272,8 +269,8 @@ public class CircularByteBuffer {
 	 * @param terminalByte 문자열의 마지막 바이트. 종료 문자.
 	 * @param encoding     인코딩.
 	 * @return 버퍼에 종료 문자가 없는 때(seek() 반환 값이 0보다 작은 경우)에는 null을 반환.
-	 * @throws IndexOutOfBoundsException
-	 * @throws UnsupportedEncodingException
+	 * @throws IndexOutOfBoundsException e
+	 * @throws UnsupportedEncodingException e
 	 */
 	public synchronized String getString(final byte terminalByte, final String encoding)
 			throws IndexOutOfBoundsException, UnsupportedEncodingException {

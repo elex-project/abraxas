@@ -68,6 +68,10 @@ public final class MemoryState {
 		this.maxMemory = Runtime.getRuntime().maxMemory();
 	}
 
+	public int getAvailableProcessors(){
+		return Runtime.getRuntime().availableProcessors();
+	}
+
 	/**
 	 * @return size in bytes
 	 * @see Runtime#totalMemory()

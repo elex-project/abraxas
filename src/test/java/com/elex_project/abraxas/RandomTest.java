@@ -42,7 +42,7 @@ class RandomTest {
 
 	@Test
 	void getCharsByPattern() {
-		String v = Random.getCharsByPattern(Pattern.compile("[0-9a-z!@#$%^&*]"), 8);
+		String v = Random.nextCharsByPattern(Pattern.compile("[0-9a-z!@#$%^&*]"), 8);
 		Console.writeLine(v);
 	}
 }

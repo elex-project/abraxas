@@ -9,6 +9,7 @@ package com.elex_project.abraxas;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
+import java.util.List;
 
 /**
  * Executor
@@ -23,16 +24,16 @@ public final class Exez {
 	 *
 	 * @param command 명령
 	 * @return 실행 결과를 반환
-	 * @throws IOException
-	 * @throws InterruptedException
+	 * @throws IOException e
+	 * @throws InterruptedException e
 	 */
 	@NotNull
-	public static String exec(@NotNull final String command) throws IOException, InterruptedException {
+	public static List<String> exec(@NotNull final String command) throws IOException, InterruptedException {
 		//Runtime runtime = Runtime.getRuntime();
-		Process process = Runtime.getRuntime().exec(command);
+		final Process process = Runtime.getRuntime().exec(command);
 		process.waitFor();
 
-		String str = IOz.readStringFrom(process.getInputStream());
+		final List<String> str = IOz.readLinesFrom(process.getInputStream());
 		process.destroy();
 
 		return str;
@@ -41,7 +42,7 @@ public final class Exez {
 	/**
 	 * 셧다운 훅
 	 *
-	 * @param th
+	 * @param th thread
 	 * @see Runtime#addShutdownHook(Thread)
 	 */
 	public static void addShutdownHook(final Thread th) {
@@ -49,7 +50,7 @@ public final class Exez {
 	}
 
 	/**
-	 * @param th
+	 * @param th thread
 	 * @see Runtime#removeShutdownHook(Thread)
 	 */
 	public static void removeShutdownHook(final Thread th) {

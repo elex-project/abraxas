@@ -128,9 +128,10 @@ public final class Random {
 		return (char) nextInt(33, 126);
 	}
 
-	public static char nextChar(){
-		return (char)nextInt();
+	public static char nextChar() {
+		return (char) nextInt();
 	}
+
 	@NotNull
 	public static String nextChars(final int length) {
 		final StringBuilder sb = new StringBuilder();
@@ -158,7 +159,7 @@ public final class Random {
 		return sb.toString();
 	}
 
-	public static char getCharAlphaNumeric() {
+	public static char nextCharAlphaNumeric() {
 		char code;
 		do {
 			code = nextAscii();
@@ -166,7 +167,7 @@ public final class Random {
 		return code;
 	}
 
-	public static char getCharByPattern(final Pattern pattern) {
+	public static char nextCharByPattern(final Pattern pattern) {
 		char code;
 		do {
 			code = nextChar();
@@ -175,19 +176,19 @@ public final class Random {
 	}
 
 	@NotNull
-	public static String getCharsAlphaNumeric(final int length) {
+	public static String nextCharsAlphaNumeric(final int length) {
 		final StringBuilder sb = new StringBuilder();
 		while (sb.length() < length) {
-			sb.append(getCharAlphaNumeric());
+			sb.append(nextCharAlphaNumeric());
 		}
 		return sb.toString();
 	}
 
 	@NotNull
-	public static String getCharsByPattern(final Pattern pattern, final int length) {
+	public static String nextCharsByPattern(final Pattern pattern, final int length) {
 		final StringBuilder sb = new StringBuilder();
 		while (sb.length() < length) {
-			sb.append(getCharByPattern(pattern));
+			sb.append(nextCharByPattern(pattern));
 		}
 		return sb.toString();
 	}
