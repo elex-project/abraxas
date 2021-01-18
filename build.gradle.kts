@@ -38,7 +38,7 @@ plugins {
 }
 
 group = "com.elex-project"
-version = "4.0.2"
+version = "4.0.3"
 description = "Core Utility Classes"
 
 repositories {
@@ -101,7 +101,7 @@ publishing {
 		create<MavenPublication>("mavenJava") {
 			from(components["java"])
 			pom {
-				name.set(project.name)
+				name.set("Abraxas")
 				description.set(project.description)
 				url.set("https://github.com/elex-project/abraxas")
 				licenses {
@@ -149,7 +149,6 @@ publishing {
 }
 
 dependencies {
-	implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
 	implementation("org.slf4j:slf4j-api:1.7.30")
 	implementation("org.jetbrains:annotations:20.1.0")
 
