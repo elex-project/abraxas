@@ -38,7 +38,7 @@ plugins {
 }
 
 group = "com.elex-project"
-version = "4.0.3"
+version = "4.0.4"
 description = "Core Utility Classes"
 
 repositories {
@@ -160,4 +160,3 @@ dependencies {
 	testImplementation("org.junit.jupiter:junit-jupiter:5.7.0")
 	testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.7.0")
 }
-

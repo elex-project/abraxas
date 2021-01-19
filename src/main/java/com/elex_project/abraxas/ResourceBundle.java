@@ -11,7 +11,6 @@ import org.jetbrains.annotations.Nullable;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FilenameFilter;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -31,15 +30,16 @@ public class ResourceBundle {
 	/**
 	 * 리소스 번들.
 	 * 한 번 읽은 파일은 캐시에 저장해둔다.
-	 * @param path
+	 *
+	 * @param path      incl. file extension
 	 * @param baseClass 리소스를 불러올 기준 클래스
 	 * @return
 	 */
 	public static ResourceBundle getBundle(final @NotNull String path, final @NotNull Class<?> baseClass) {
-		if (null==CACHE){
+		if (null == CACHE) {
 			CACHE = new HashMap<>();
 		}
-		if (CACHE.containsKey(path)){
+		if (CACHE.containsKey(path)) {
 			return CACHE.get(path);
 		} else {
 			ResourceBundle bundle = new ResourceBundle(path, baseClass);
@@ -54,6 +54,7 @@ public class ResourceBundle {
 	/**
 	 * 외부 파일로부터 읽는다.
 	 * 캐시에 저장되지 않는다. 즉, 인스턴스를 생성할 때마다 매번 파일을 읽는다.
+	 *
 	 * @param file
 	 * @throws MalformedURLException
 	 */
@@ -133,7 +134,8 @@ public class ResourceBundle {
 	/**
 	 * Get value from that locale, with that key.
 	 * if not found, returns a value within a root locale.
-	 * @param key key
+	 *
+	 * @param key    key
 	 * @param locale locate
 	 * @return optional value
 	 */
@@ -154,8 +156,19 @@ public class ResourceBundle {
 		}
 	}
 
+	@Nullable
+	public String getOrNull(final @NotNull String key, final @NotNull Locale locale) {
+		return get(key, locale).orElse(null);
+	}
+
+	@NotNull
+	public String getOrEmpty(final @NotNull String key, final @NotNull Locale locale) {
+		return get(key, locale).orElse(Stringz.EMPTY_STRING);
+	}
+
 	/**
 	 * Get value with a default locale, with that key.
+	 *
 	 * @param key key
 	 * @return optional value
 	 */
@@ -164,8 +177,19 @@ public class ResourceBundle {
 		return get(key, Locale.getDefault());
 	}
 
+	@Nullable
+	public String getOrNull(final String key) {
+		return get(key).orElse(null);
+	}
+
+	@NotNull
+	public String getOrEmpty(final String key) {
+		return get(key).orElse(Stringz.EMPTY_STRING);
+	}
+
 	/**
 	 * Get locales with the bundle
+	 *
 	 * @return set
 	 */
 	@NotNull
