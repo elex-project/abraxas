@@ -38,7 +38,7 @@ plugins {
 }
 
 group = "com.elex-project"
-version = "4.0.4"
+version = "4.0.5"
 description = "Core Utility Classes"
 
 repositories {
@@ -104,6 +104,10 @@ publishing {
 				name.set("Abraxas")
 				description.set(project.description)
 				url.set("https://github.com/elex-project/abraxas")
+				organization {
+					name.set("Elex co.,Pte.")
+					url.set("https://www.elex-project.com/")
+				}
 				licenses {
 					license {
 						name.set("BSD 3-Clause License")
@@ -114,7 +118,12 @@ publishing {
 					developer {
 						id.set("elex-project")
 						name.set("Elex")
+						url.set("https://www.elex.pe.kr/")
 						email.set("developer@elex-project.com")
+						organization.set("Elex Co.,Pte.")
+						organizationUrl.set("https://www.elex-project.com/")
+						roles.set(arrayListOf("Developer", "CEO"))
+						timezone.set("Asia/Seoul")
 					}
 				}
 				scm {
