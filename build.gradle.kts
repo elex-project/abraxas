@@ -38,7 +38,7 @@ plugins {
 }
 
 group = "com.elex-project"
-version = "4.0.5"
+version = "4.0.7"
 description = "Core Utility Classes"
 
 repositories {
